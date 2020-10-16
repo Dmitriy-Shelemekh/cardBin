@@ -33,12 +33,7 @@ public class CardRepository {
                 .orElse(null);
 
         if (card == null) {
-            try {
-                card = binlistClient.checkBin(bin);
-            } catch (Exception e) {
-                log.error("BinList Client error: " + e);
-            }
-
+            card = binlistClient.checkBin(bin);
             cards.add(card);
 
             log.info("In binlist.net was found: {}", card);

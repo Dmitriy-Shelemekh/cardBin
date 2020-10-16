@@ -28,6 +28,8 @@ public class BinlistClient {
             return card;
         } catch (URISyntaxException e) {
             log.error("Invalid Syntax for URL: {}, with BIN: {}", url, bin);
+        } catch (Exception e) {
+            log.error("BinList Client error: " + e);
         }
 
         return null;
