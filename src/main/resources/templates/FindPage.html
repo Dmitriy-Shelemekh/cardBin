@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All Cards</title>
+</head>
+<body>
+
+<div>
+    <input type="text" id="number" placeholder="Введите Card BIN">
+    <a th:href="@{find/{bin}(bin=${number})}">Проверить</a>
+</div>
+
+<div th:if="${lastChecked}">
+    <label>Последние десять запрошенных BIN:</label>
+    <div th:each="card : ${lastChecked}">
+        <div th:text="${card.bin}"></div>
+    </div>
+</div>
+
+</body>
+</html>
