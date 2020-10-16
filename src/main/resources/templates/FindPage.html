@@ -17,7 +17,7 @@
 </div>
 
 <div th:if="${not #lists.isEmpty(lastChecked)}">
-    <label>Последние десять запрошенных BIN:</label>
+    <label>Последние запрошенные BIN`s:</label>
     <div th:each="card : ${lastChecked}">
         <div th:text="${card.bin}"></div>
     </div>
