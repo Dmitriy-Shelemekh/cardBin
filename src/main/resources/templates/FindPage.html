@@ -11,7 +11,7 @@
     <a th:href="@{find/{bin}(bin=${number})}">Проверить</a>
 </div>
 
-<div th:if="${lastChecked}">
+<div th:if="${not #lists.isEmpty(lastChecked)}">
     <label>Последние десять запрошенных BIN:</label>
     <div th:each="card : ${lastChecked}">
         <div th:text="${card.bin}"></div>
