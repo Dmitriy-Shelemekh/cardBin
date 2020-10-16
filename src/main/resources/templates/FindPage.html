@@ -2,15 +2,17 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>All Cards</title>
+    <title>Card Check</title>
 </head>
 <body>
 
 <div>
-    <form th:action="@{find/}"  method="get">
-        <input type="text" th:value="${bin}" name="bin" placeholder="Введите Card BIN"/>
-        <input type="submit" />
-    </form>
+    <input type="text" id="bin" placeholder="Введите Card BIN">
+    <a th:href="@{card/find/{bin}(bin=${bin})}">Проверить</a>
+</div>
+
+<div th:if="${not #lists.isEmpty(card)}">
+    <div th:text="${card}"></div>
 </div>
 
 <div th:if="${not #lists.isEmpty(lastChecked)}">
