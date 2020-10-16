@@ -18,7 +18,8 @@ public class CardRepository {
     private List<Card> cards = new ArrayList<>();
 
     @Getter
-    private List<Card> lastCheckedBINs = new ArrayList<>();;
+    private List<Card> lastCheckedBINs = new ArrayList<>();
+    ;
 
     @Autowired
     public CardRepository(BinlistClient binlistClient) {
@@ -39,12 +40,11 @@ public class CardRepository {
             log.info("In binlist.net was found: {}", card);
         }
 
-        if (lastCheckedBINs.size() > LIMIT) {
-            lastCheckedBINs.remove(1);
-            lastCheckedBINs.add(card);
-        } else {
-            lastCheckedBINs.add(card);
+        while (lastCheckedBINs.size() >= LIMIT) {
+            lastCheckedBINs.remove(0);
         }
+
+        lastCheckedBINs.add(card);
 
         return card;
     }
