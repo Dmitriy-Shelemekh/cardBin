@@ -30,6 +30,7 @@ public class CardController {
 
     @GetMapping(value = "/find/{bin}")
     public String findCard(@PathVariable("bin") int bin, Model model) {
+//      При редиректе теряется card
         model.addAttribute("card", cardRepository.findCard(bin));
 
         return "redirect:/card";

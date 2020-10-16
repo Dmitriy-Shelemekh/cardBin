@@ -7,6 +7,7 @@
 <body>
 
 <div>
+    <!--В урл не подставляет номер bin для поиска-->
     <input type="text" id="bin" placeholder="Введите Card BIN">
     <a th:href="@{card/find/{bin}(bin=${bin})}">Проверить</a>
 </div>
