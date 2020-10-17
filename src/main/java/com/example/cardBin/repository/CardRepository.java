@@ -19,7 +19,12 @@ public class CardRepository {
 
     @Getter
     private List<Card> lastCheckedBINs = new ArrayList<>();
-    ;
+
+    {
+        Card card = new Card();
+        card.setBin(45717360);
+        cards.add(card);
+    }
 
     @Autowired
     public CardRepository(BinlistClient binlistClient) {
