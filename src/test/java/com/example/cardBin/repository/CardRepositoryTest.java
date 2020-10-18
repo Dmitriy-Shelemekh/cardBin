@@ -11,8 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.ArgumentMatchers.any;
-
 @SpringBootTest
 class CardRepositoryTest {
     int binNumberForExistedCards = 45717360;
@@ -26,9 +24,6 @@ class CardRepositoryTest {
     @Autowired
     CardRepository repository;
 
-    @Autowired
-    BinlistClient client;
-
     @Test
     void findCardInExistListTest() {
         existedCard.setBin(binNumberForExistedCards);
@@ -40,7 +35,8 @@ class CardRepositoryTest {
     @Test
     void findCardInBinListNetTest() {
         binListCard.setBin(binNumberForBinListCards);
-        Mockito.when(client.findCard(any())).thenReturn(binListCard);
+        BinlistClient binlistClient = Mockito.mock(BinlistClient.class);
+        Mockito.when(binlistClient.findCard(binNumberForBinListCards)).thenReturn(binListCard);
 
         Assert.assertEquals(repository.findCard(binNumberForBinListCards).getBin(), binListCard.getBin());
     }
