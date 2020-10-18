@@ -15,6 +15,7 @@ import java.util.List;
 @Component
 public class CardRepository {
     private static final int LIMIT = 10;
+    private static final int FIRST = 0;
     private final BinlistClient binlistClient;
 
     @Getter
@@ -47,7 +48,7 @@ public class CardRepository {
 
     public void addCardToLastChecked(Card card) {
         while (lastCheckedBINs.size() >= LIMIT) {
-            lastCheckedBINs.remove(0);
+            lastCheckedBINs.remove(FIRST);
         }
 
         lastCheckedBINs.add(card);
