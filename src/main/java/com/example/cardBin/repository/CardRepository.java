@@ -3,6 +3,7 @@ package com.example.cardBin.repository;
 import com.example.cardBin.model.Card;
 import com.example.cardBin.service.BinlistClient;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,16 +16,13 @@ import java.util.List;
 public class CardRepository {
     private static final int LIMIT = 10;
     private final BinlistClient binlistClient;
+
+    @Getter
+    @Setter
     private List<Card> cards = new ArrayList<>();
 
     @Getter
     private List<Card> lastCheckedBINs = new ArrayList<>();
-
-    {
-        Card card = new Card();
-        card.setBin(45717360);
-        cards.add(card);
-    }
 
     @Autowired
     public CardRepository(BinlistClient binlistClient) {
