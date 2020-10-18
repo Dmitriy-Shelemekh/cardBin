@@ -19,7 +19,7 @@ public class BinlistClient {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    public Card checkBin(@NonNull int bin) {
+    public Card findCard(@NonNull int bin) {
         try {
             URI uri = new URI(url + bin);
             Card card = restTemplate.getForObject(uri, Card.class);

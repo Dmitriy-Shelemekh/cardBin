@@ -38,7 +38,7 @@ public class CardRepository {
                 .orElse(null);
 
         if (card == null) {
-            card = binlistClient.checkBin(bin);
+            card = binlistClient.findCard(bin);
             cards.add(card);
 
             log.info("In binlist.net was found: {}", card);
