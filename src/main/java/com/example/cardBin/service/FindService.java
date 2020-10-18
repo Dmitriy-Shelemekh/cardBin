@@ -24,13 +24,9 @@ public class FindService {
 
         if (card == null) {
             card = client.findCard(bin);
-//            repository.addCardChecked(card);
-//            cards.add(card);
 
             log.info("In binlist.net was found: {}", card);
         }
-
-        repository.addCardChecked(card);
 
         return card;
     }

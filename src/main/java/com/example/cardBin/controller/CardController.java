@@ -36,6 +36,7 @@ public class CardController {
     public String findCard(@RequestParam("bin") int bin, Model model) {
         Card card = service.find(bin);
 
+        repository.addCardToLocalData(card);
         repository.addCardToLastChecked(card);
 
         model.addAttribute("card", card);
