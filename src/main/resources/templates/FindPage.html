@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+>
 <head>
     <meta charset="UTF-8">
     <title>Card Check</title>
@@ -7,21 +8,24 @@
 <body>
 
 <div>
-    <form th:action="@{/card/find/}"  method="get">
-        <input type="text" th:value="${bin}" name="bin" placeholder="Введите Card BIN"/>
-        <input type="submit" />
-    </form>
-</div>
-
-<div th:if="${not #lists.isEmpty(card)}">
-    <div th:text="${card}"></div>
-</div>
-
-<div th:if="${not #lists.isEmpty(lastChecked)}">
-    <label>Последние запрошенные BIN`s:</label>
-    <div th:each="card : ${lastChecked}">
-        <div th:text="${card.bin}"></div>
+    <div style="float: left; width: 300px;">
+        <form th:action="@{/card/find/}" method="get">
+            <input type="text" th:value="${bin}" name="bin" placeholder="Введите Card BIN"/>
+            <input type="submit"/>
+        </form>
     </div>
+
+    <div style="float: left; width: 300px;" th:if="${not #lists.isEmpty(lastChecked)}">
+        <label>Последние запрошенные BIN`s:</label>
+        <div th:each="card : ${lastChecked}">
+            <div th:text="${card.bin}"></div>
+        </div>
+        <p></p>
+    </div>
+</div>
+
+<div style="clear: left;" th:if="${not #lists.isEmpty(card)}">
+    <div th:text="${card}"></div>
 </div>
 
 </body>
