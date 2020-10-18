@@ -7,9 +7,10 @@
 <body>
 
 <div>
-    <!--В урл не подставляет номер bin для поиска-->
-    <input type="text" id="bin" placeholder="Введите Card BIN">
-    <a th:href="@{card/find/{bin}(bin=${bin})}">Проверить</a>
+    <form th:action="@{find/}"  method="get">
+        <input type="text" th:value="${bin}" name="bin" placeholder="Введите Card BIN"/>
+        <input type="submit" />
+    </form>
 </div>
 
 <div th:if="${not #lists.isEmpty(card)}">

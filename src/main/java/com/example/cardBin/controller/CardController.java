@@ -1,13 +1,14 @@
 package com.example.cardBin.controller;
 
+import com.example.cardBin.model.Card;
 import com.example.cardBin.repository.CardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @Slf4j
@@ -28,9 +29,10 @@ public class CardController {
         return "FindPage";
     }
 
-    @GetMapping(value = "/find/{bin}")
-    public String findCard(@PathVariable("bin") int bin, Model model) {
-        model.addAttribute("card", cardRepository.findCard(bin));
+    @GetMapping(value = "/find/")
+    public String findCard(@RequestParam("bin") int bin, Model model) {
+        Card card = cardRepository.findCard(bin);
+        model.addAttribute("card", card);
         model.addAttribute("lastChecked", cardRepository.getLastCheckedBINs());
 
         return "FindPage";
