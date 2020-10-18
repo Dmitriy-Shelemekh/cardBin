@@ -35,8 +35,8 @@ class CardRepositoryTest {
     @Test
     void findCardInBinListNetTest() {
         binListCard.setBin(binNumberForBinListCards);
-        BinlistClient binlistClient = Mockito.mock(BinlistClient.class);
-        Mockito.when(binlistClient.findCard(binNumberForBinListCards)).thenReturn(binListCard);
+        BinlistClient mockedClient = Mockito.mock(BinlistClient.class);
+        Mockito.when(mockedClient.findCard(binNumberForBinListCards)).thenReturn(binListCard);
 
         Assert.assertEquals(repository.findCard(binNumberForBinListCards).getBin(), binListCard.getBin());
     }

@@ -42,12 +42,14 @@ public class CardRepository {
             log.info("In binlist.net was found: {}", card);
         }
 
+        return card;
+    }
+
+    public void addCardToLastChecked(Card card) {
         while (lastCheckedBINs.size() >= LIMIT) {
             lastCheckedBINs.remove(0);
         }
 
         lastCheckedBINs.add(card);
-
-        return card;
     }
 }

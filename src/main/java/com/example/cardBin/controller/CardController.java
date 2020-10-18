@@ -1,5 +1,6 @@
 package com.example.cardBin.controller;
 
+import com.example.cardBin.model.Card;
 import com.example.cardBin.repository.CardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,11 @@ public class CardController {
 
     @GetMapping(value = "/find/")
     public String findCard(@RequestParam("bin") int bin, Model model) {
-        model.addAttribute("card", cardRepository.findCard(bin));
+        Card card = cardRepository.findCard(bin);
+
+        cardRepository.addCardToLastChecked(card);
+
+        model.addAttribute("card", card);
         model.addAttribute("lastChecked", cardRepository.getLastCheckedBINs());
 
         return "FindPage";
