@@ -36,14 +36,11 @@ public class CardRepository {
                 .findFirst()
                 .orElse(null);
 
-        if (card == null) {
-            card = binlistClient.findCard(bin);
-            cards.add(card);
-
-            log.info("In binlist.net was found: {}", card);
-        }
-
         return card;
+    }
+
+    public void addCardChecked(Card card) {
+        cards.add(card);
     }
 
     public void addCardToLastChecked(Card card) {
