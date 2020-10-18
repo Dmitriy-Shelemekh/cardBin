@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class FindService {
-
     private CardRepository repository;
     private BinlistClient client;
 
@@ -19,6 +18,7 @@ public class FindService {
         this.client = client;
     }
 
+    // Не забыть про валидацию bin номера!
     public Card find(int bin) {
         Card card = repository.findCard(bin);
 
