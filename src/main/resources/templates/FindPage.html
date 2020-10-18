@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Card Check</title>
@@ -25,7 +24,28 @@
 </div>
 
 <div style="clear: left;" th:if="${not #lists.isEmpty(card)}">
-    <div th:text="${card}"></div>
+    Card: <label th:text= "${card.bin}"></label>
+    <p></p>
+    <table border="border: 1px">
+        <tr>
+            <th>Number</th>
+            <th>Scheme</th>
+            <th>Type</th>
+            <th>Brand</th>
+            <th>Prepaid</th>
+            <th>Country</th>
+            <th>Bank</th>
+        </tr>
+        <tr>
+            <td th:text="${card.number}"></td>
+            <td th:text="${card.scheme}"></td>
+            <td th:text="${card.type}"></td>
+            <td th:text="${card.brand}"></td>
+            <td th:text="${card.prepaid}"></td>
+            <td th:text="${card.country}"></td>
+            <td th:text="${card.bank}"></td>
+        </tr>
+    </table>
 </div>
 
 </body>
