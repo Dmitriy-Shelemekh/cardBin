@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
+
 @Slf4j
 @Service
 public class FindService {
@@ -19,7 +21,7 @@ public class FindService {
     }
 
     // Не забыть про валидацию bin номера!
-    public Card find(int bin) {
+    public Card find(@Valid int bin) {
         Card card = repository.findCard(bin);
 
         if (card == null) {

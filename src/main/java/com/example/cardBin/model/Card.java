@@ -2,12 +2,15 @@ package com.example.cardBin.model;
 
 import lombok.*;
 
+import javax.validation.constraints.Size;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Card {
+    @Size(min=40000000, max=50000000)
     private Integer bin;
     private Number number;
     private String scheme;
