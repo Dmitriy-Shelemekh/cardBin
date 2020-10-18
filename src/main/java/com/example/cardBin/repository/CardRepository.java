@@ -4,6 +4,7 @@ import com.example.cardBin.model.Card;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,8 +13,12 @@ import java.util.List;
 @Slf4j
 @Component
 public class CardRepository {
-    private static final int LIMIT = 10;
-    private static final int FIRST = 0;
+
+    @Value("${lastCheckedBIN.limit}")
+    int limit;
+
+    @Value("${lastCheckedBIN.positionToRemove}")
+    int position = 0;
 
     @Getter
     @Setter
@@ -36,8 +41,8 @@ public class CardRepository {
     }
 
     public void addCardToLastChecked(Card card) {
-        while (lastCheckedBINs.size() >= LIMIT) {
-            lastCheckedBINs.remove(FIRST);
+        while (lastCheckedBINs.size() >= limit) {
+            lastCheckedBINs.remove(position);
         }
 
         lastCheckedBINs.add(card);
